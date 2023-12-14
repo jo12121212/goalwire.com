@@ -41,5 +41,30 @@
         <a href="mailto:jrodrigue1166@mymail.lausd.net" class="contact-button">Email Joseph</a>
         <a href="mailto:rfregoso0003@mymail.lausd.net" class="contact-button">Email Rafael</a>
     </div>
+     <h1>Ask a Question</h1>
+
+    <form id="questionForm">
+        <label for="question">Your Question:</label>
+        <input type="text" id="question" name="question" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("questionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Fetch the question value
+            const question = document.getElementById("question").value;
+            
+            // You can perform additional actions here, such as sending the question to a server
+            // For demonstration purposes, let's log the question to the console
+            console.log("Submitted Question:", question);
+            
+            // You can also reset the form if needed
+            // event.target.reset();
+        });
+    </script>
+
 </body>
 </html>
