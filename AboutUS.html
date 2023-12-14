@@ -41,11 +41,17 @@
         <a href="mailto:jrodrigue1166@mymail.lausd.net" class="contact-button">Email Joseph</a>
         <a href="mailto:rfregoso0003@mymail.lausd.net" class="contact-button">Email Rafael</a>
     </div>
-     <h1>Ask a Question</h1>
+      <h1>Ask a Question</h1>
 
     <form id="questionForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
         <label for="question">Your Question:</label>
-        <input type="text" id="question" name="question" required>
+        <textarea id="question" name="question" rows="4" required></textarea>
 
         <button type="submit">Submit</button>
     </form>
@@ -53,14 +59,25 @@
     <script>
         document.getElementById("questionForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            
-            // Fetch the question value
+
+            // Fetch the name, email, and question values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
             const question = document.getElementById("question").value;
-            
-            // You can perform additional actions here, such as sending the question to a server
-            // For demonstration purposes, let's log the question to the console
+
+            // Simple email validation (you can improve this based on your requirements)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address. Please enter a valid email.");
+                return;
+            }
+
+            // You can perform additional actions here, such as sending the data to a server
+            // For demonstration purposes, let's log the name, email, and question to the console
+            console.log("Submitted Name:", name);
+            console.log("Submitted Email:", email);
             console.log("Submitted Question:", question);
-            
+
             // You can also reset the form if needed
             // event.target.reset();
         });
